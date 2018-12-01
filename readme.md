@@ -1,0 +1,3 @@
+# Homebrew Tap for DisplayModeSwitcher
+
+
