@@ -2,27 +2,23 @@ class Displaymodeswitcher < Formula
   desc "Status bar utility for switching display resolution"
   homepage "https://github.com/bellbind/DisplayModeSwitcher/"
   
-  url "https://github.com/bellbind/DisplayModeSwitcher/archive/1.1.0.tar.gz"
-  sha256 "8177128915492cf40d1c723b644017716917cd2a8d02484386ffcd1b6758d20b"
+  url "https://github.com/bellbind/DisplayModeSwitcher/archive/1.1.1.tar.gz"
+  sha256 "d62af228191ad5c19a69021b73ec82f603119b2ff3d68b83e9c871381a469ea7"
 
   head "https://github.com/bellbind/DisplayModeSwitcher.git"
 
   devel do
-    # [Hidden API version: brew install --devel --no-sandbox displaymodeswitcher]
-    url "https://github.com/bellbind/DisplayModeSwitcher/archive/1.1.0h.tar.gz"
-    version "1.1.0h"
-    sha256 "29ed7e5731a34b2d98a65585b8e82cdcec351fbf259309d6acb68f4681029caa"
+    # [Hidden API version: brew install --devel displaymodeswitcher]
+    url "https://github.com/bellbind/DisplayModeSwitcher/archive/1.1.1h.tar.gz"
+    version "1.1.1h"
+    sha256 "8e7d15910251486f9fadac91cd3e7e5a8ceadcf866835a5b8d9739119f1b4847"
   end
   
   depends_on "imagemagick" => :build
+  depends_on "webkit2png" => :build
   depends_on :xcode => :build
 
   def install
-    ohai ""
-    ohai "[NOTICE] For generating app icon, qlmanage command required to run outside of sandbox:"
-    ohai "$ brew uninstall displaymodeswitcher"
-    ohai "$ brew install --no-sandbox displaymodeswitcher"
-    ohai ""
     system "./makeappbundle.sh"
     prefix.install "DisplayModeSwitcher.app"
     bin.install_symlink prefix/"DisplayModeSwitcher.app/Contents/MacOS/DisplayModeSwitcher"
