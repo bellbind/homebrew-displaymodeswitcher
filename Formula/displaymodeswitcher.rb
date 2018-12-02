@@ -14,11 +14,9 @@ class Displaymodeswitcher < Formula
   depends_on "imagemagick" => :build
 
   def install
-    ohai <<-EOS
-[NOTICE] For generating app icon, qlmanage command required to run outside of sandbox:
-$ brew uninstall displaymodeswitcher
-$ brew install --no-sandbox displaymodeswitcher
-EOS
+    ohai "[NOTICE] For generating app icon, qlmanage command required to run outside of sandbox:"
+    ohai "$ brew uninstall displaymodeswitcher"
+    ohai "$ brew install --no-sandbox displaymodeswitcher"
     system "./makeappbundle.sh"
     prefix.install "DisplayModeSwitcher.app"
     bin.install_symlink prefix/"DisplayModeSwitcher.app/Contents/MacOS/DisplayModeSwitcher"
