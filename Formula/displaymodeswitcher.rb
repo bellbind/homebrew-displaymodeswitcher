@@ -1,33 +1,36 @@
 class Displaymodeswitcher < Formula
   desc "Tiny status bar utility for switching display resolution on macos"
   homepage "https://github.com/bellbind/DisplayModeSwitcher/"
-  url "https://github.com/bellbind/DisplayModeSwitcher/archive/1.0.2.tar.gz"
-  sha256 "4f1c13348244fb63a8a542c4ce6212ac51374c07900a1d145a5e002436190128"
+  url "https://github.com/bellbind/DisplayModeSwitcher/archive/1.1.0.tar.gz"
+  sha256 "8177128915492cf40d1c723b644017716917cd2a8d02484386ffcd1b6758d20b"
 
   devel do
     # [Hidden API version: brew install --devel --no-sandbox displaymodeswitcher]
-    url "https://github.com/bellbind/DisplayModeSwitcher/archive/1.0.2h.tar.gz"
-    sha256 "08d4cf8f3a3fc7df35f534d6ae8e405d44339a47d04cfe46aaf367dfc92a4ff9"
+    url "https://github.com/bellbind/DisplayModeSwitcher/archive/1.1.0h.tar.gz"
+    sha256 "29ed7e5731a34b2d98a65585b8e82cdcec351fbf259309d6acb68f4681029caa"
   end
   
   depends_on :xcode => :build
   depends_on "imagemagick" => :build
 
   def install
-    ohai "[NOTICE: For generating app icon, qlmanage command required to run outside of sandbox]"
-    ohai "$ brew install --no-sandbox displaymodeswitcher"
+    ohai <<EOS-
+[NOTICE] For generating app icon, qlmanage command required to run outside of sandbox:
+$ brew install --no-sandbox displaymodeswitcher
+EOS
     system "./makeappbundle.sh"
     prefix.install "DisplayModeSwitcher.app"
     bin.install_symlink prefix/"DisplayModeSwitcher.app/Contents/MacOS/DisplayModeSwitcher"
+    bin.install_symlink prefix/"DisplayModeSwitcher.app/Contents/MacOS/displaymode"
   end
 
   def caveats
     <<-EOS
 
-[For Launchpad, add DisplayModeSwitcher.app to ~/Applications/ as]:
-$ ln -s #{opt_prefix}/DisplayModeSwitcher.app ~/Applications/
+[NOTE] Please add the `DisplayModeSwitcher.app` symlink into `~/Applications/`:
+$ ln -sf #{opt_prefix}/DisplayModeSwitcher.app ~/Applications/
 
-    EOS
+ EOS
   end
   
   test do
