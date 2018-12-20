@@ -2,16 +2,16 @@ class Displaymodeswitcher < Formula
   desc "Status bar utility for switching display resolution"
   homepage "https://github.com/bellbind/DisplayModeSwitcher/"
   
-  url "https://github.com/bellbind/DisplayModeSwitcher/archive/1.1.1.tar.gz"
-  sha256 "d62af228191ad5c19a69021b73ec82f603119b2ff3d68b83e9c871381a469ea7"
+  url "https://github.com/bellbind/DisplayModeSwitcher/archive/1.1.2.tar.gz"
+  sha256 "174f3d8d4f5ab212eb7ad94ae31b0f93045258a7bb096fe24b4fb21bc100063e"
 
   head "https://github.com/bellbind/DisplayModeSwitcher.git"
 
   devel do
     # [Hidden API version: brew install --devel displaymodeswitcher]
-    url "https://github.com/bellbind/DisplayModeSwitcher/archive/1.1.1h.tar.gz"
-    version "1.1.1h"
-    sha256 "8e7d15910251486f9fadac91cd3e7e5a8ceadcf866835a5b8d9739119f1b4847"
+    url "https://github.com/bellbind/DisplayModeSwitcher/archive/1.1.2h.tar.gz"
+    version "1.1.2h"
+    sha256 "e50071c7cf78b222ead68778f222df662f32f6ee1a62048701265d609a5a3292"
   end
   
   depends_on "imagemagick" => :build
@@ -21,7 +21,6 @@ class Displaymodeswitcher < Formula
   def install
     system "./makeappbundle.sh"
     prefix.install "DisplayModeSwitcher.app"
-    bin.install_symlink prefix/"DisplayModeSwitcher.app/Contents/MacOS/DisplayModeSwitcher"
     bin.install_symlink prefix/"DisplayModeSwitcher.app/Contents/MacOS/displaymode"
   end
 
