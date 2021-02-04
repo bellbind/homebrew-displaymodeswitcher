@@ -7,7 +7,7 @@ class Displaymodeswitcher < Formula
 
   head "https://github.com/bellbind/DisplayModeSwitcher.git"
 
-  devel do
+  headl do
     # [Hidden API version: brew install --devel displaymodeswitcher]
     url "https://github.com/bellbind/DisplayModeSwitcher/archive/1.1.2h.tar.gz"
     version "1.1.2h"
