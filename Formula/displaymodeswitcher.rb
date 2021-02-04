@@ -16,7 +16,7 @@ class Displaymodeswitcher < Formula
   
   depends_on "imagemagick" => :build
   depends_on "webkit2png" => :build
-  depends_on :xcode => :build
+  depends_on :swift => :build
 
   def install
     system "./makeappbundle.sh"
